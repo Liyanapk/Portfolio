@@ -1,0 +1,39 @@
+import { Analytics } from "@vercel/analytics/next"
+import { Inter, Sora } from "next/font/google"
+import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+})
+
+export const metadata = {
+  title: "Liyana KP — UI/UX Designer & Front-End Developer",
+  description:
+    "Portfolio of Liyana KP, a UI/UX Designer and Front-End Developer creating intuitive digital experiences and responsive web applications.",
+  generator: "v0.app",
+}
+
+export const viewport = {
+  themeColor: "#0B0B0B",
+  colorScheme: "dark",
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={`dark ${inter.variable} ${sora.variable}`}>
+      <body className="bg-background font-sans antialiased">
+        {children}
+        {process.env.NODE_ENV === "production" && <Analytics />}
+      </body>
+    </html>
+  )
+}
