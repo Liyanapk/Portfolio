@@ -1,11 +1,24 @@
+"use client"
+
 import { ABOUT_BADGES } from "@/lib/portfolio-data"
 import { Container, SectionKicker } from "./primitives"
 
 // Reusable outlined pill badge.
-function Badge({ children }) {
+function Badge({ children, index }) {
   return (
-    <span className="flex min-h-14 items-center justify-center rounded-lg border border-primary/50 bg-card px-4 text-center text-xs font-medium uppercase tracking-wide text-foreground">
-      {children}
+    <span
+      className="badge relative flex min-h-14 items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-black px-4 text-center text-xs font-medium uppercase tracking-wide text-foreground"
+      style={{ animationDelay: `${index * 0.5}s` }}
+    >
+      <span className="star left-3 top-2" />
+      <span className="star small left-8 bottom-3 delay-1" />
+      <span className="star right-4 top-3 delay-2" />
+      <span className="star small right-9 bottom-2 delay-3" />
+      <span className="star left-1/2 top-2 delay-4" />
+      <span className="star small left-[70%] bottom-3 delay-5" />
+      <span className="star right-[30%] top-5 delay-6" />
+
+      <span className="relative z-10">{children}</span>
     </span>
   )
 }

@@ -32,9 +32,9 @@ function ProjectCard({
   )
 
   const backContent = (
-    <div className="flex h-full w-full flex-col justify-between rounded-xl bg-slate-950 p-5 text-white">
+    <div className="flex h-full w-full flex-col justify-between rounded-xl bg-black p-5 text-white">
       <div>
-        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-yellow-400">Project details</p>
+        {/* <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-yellow-400">Project details</p> */}
         <h3 className="mb-2 text-lg font-extrabold text-yellow-300">{backTitle}</h3>
         {/* <p className="text-sm leading-relaxed text-slate-300">{backSkills}</p> */}
 
@@ -42,7 +42,7 @@ function ProjectCard({
           <ul className="mt-4 space-y-2">
             {details.map((item) => (
               <li key={`${title}-${item}`} className="flex items-start gap-2 text-sm text-slate-200">
-                <span className="mt-1 h-2 w-2 rounded-full bg-yellow-300" />
+                <span className=" rounded-full bg-yellow-300" />
                 <span>{item}</span>
               </li>
             ))}

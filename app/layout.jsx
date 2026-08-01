@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/next"
 import { Inter, Sora } from "next/font/google"
+import { ScrollToTop } from "@/components/portfolio/scroll-to-top"
 import "./globals.css"
 
 const inter = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`dark ${inter.variable} ${sora.variable}`}>
       <body className="bg-background font-sans antialiased">
         {children}
+        <ScrollToTop />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

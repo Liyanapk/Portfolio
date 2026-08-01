@@ -12,10 +12,10 @@ function ExperienceItem({ company, role, period, points }) {
         <span className="text-xs text-muted-foreground">{period}</span>
       </div>
       <p className="mt-1 text-sm text-foreground">{role}</p>
-      <ul className="mt-3 space-y-1.5">
+      <ul className="mt-2 ">
         {points.map((point) => (
-          <li key={point} className="text-sm text-muted-foreground">
-            <span className="mr-2 text-primary">•</span>
+          <li key={point} className="text-sm text-muted-foreground ">
+            <span className=" text-primary"></span>
             {point}
           </li>
         ))}
@@ -30,6 +30,8 @@ export function Experience() {
       <Container>
         <SectionTitle>Experience</SectionTitle>
         <ol className="relative mt-12 space-y-12 border-l border-border pl-4">
+          {/* Golden light that travels down the timeline occasionally */}
+          <span aria-hidden="true" className="timeline-light" />
           {EXPERIENCE.map((item) => (
             <ExperienceItem key={item.company} {...item} />
           ))}

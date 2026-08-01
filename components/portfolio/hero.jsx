@@ -7,9 +7,9 @@ export function Hero() {
       {/* soft accent glow behind the portrait */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[450px] -translate-x-[56%] -translate-y-1/2 rounded-full bg-primary/30 blur-[140px]"
       />
-      <Container className="relative grid grid-cols-1 items-center gap-6 pb-8 pt-4 md:grid-cols-[1fr_1.2fr_1fr] md:gap-2 md:pb-6 md:pt-5 lg:pb-4 lg:pt-0">
+      <Container className="relative grid grid-cols-1 items-center gap-6 pb-8 pt-4 md:grid-cols-[1fr_1.2fr_1fr] md:gap-2 md:pb-6 md:pt-5 lg:pb-4 lg:pt-10">
         {/* Left intro */}
         <div className="order-2 text-center md:order-1 md:text-left">
           <p className="text-lg text-muted-foreground">Hello, I&apos;m</p>
@@ -26,7 +26,7 @@ export function Hero() {
               alt="Portrait of Liyana KP"
               className="h-auto w-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/70 to-transparent" />
+            <div className="pointer-events-none absolute  bottom-0 h-24 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/70 to-transparent" />
           </div>
         </div>
 
