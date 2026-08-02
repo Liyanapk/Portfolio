@@ -5,7 +5,7 @@ import FlipCoinButton from "@/components/ui/flip-coin-button"
 
 export function ResumeDownloadButton() {
   return (
-    <a href="/Liyana-KP-Resume.pdf" download className="inline-flex">
+    <a href="/document/Liyana_UI_UX.pdf" download className="inline-flex">
       <FlipCoinButton>
         <span className="inline-flex items-center gap-5">
           {/* <Download className="h-4 w-4" /> */}

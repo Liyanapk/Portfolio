@@ -19,14 +19,14 @@ export default function FlipCoinButton({ children = "Download Resume" }: FlipCoi
 
     setClicked(true)
 
-    if (typeof window !== "undefined") {
-      const link = document.createElement("a")
-      link.href = "/resume.pdf"
-      link.download = "resume.pdf"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
+    // if (typeof window !== "undefined") {
+    //   const link = document.createElement("a")
+    //   link.href = "/resume.pdf"
+    //   link.download = "resume.pdf"
+    //   document.body.appendChild(link)
+    //   link.click()
+    //   document.body.removeChild(link)
+    // }
 
     setTimeout(() => {
       if (coinRef.current) {

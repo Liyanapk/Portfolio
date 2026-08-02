@@ -8,7 +8,7 @@ export function Container({ className, children }) {
 // Small kicker label rendered in the accent color above section titles.
 export function SectionKicker({ children, className }) {
   return (
-    <span className={cn("text-sm font-semibold uppercase tracking-[0.2em] text-primary", className)}>{children}</span>
+    <span className={cn("text-md font-semibold uppercase tracking-[0.2em] text-primary", className)}>{children}</span>
   )
 }
 

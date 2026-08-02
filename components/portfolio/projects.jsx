@@ -50,14 +50,27 @@ function ProjectCard({
         ) : null}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="text-sm font-semibold text-yellow-300">Tools:</span>
-        {tools.map((tool) => (
-          <span key={`${title}-${tool}`} className="rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-slate-100">
-            {tool}
-          </span>
-        ))}
-      </div>
+    <div className="mt-4 flex flex-wrap items-center gap-2">
+  <span className="text-sm font-semibold text-yellow-300">Tools:</span>
+
+  {tools.map((tool) => (
+    tool.startsWith("img:") ? (
+      <img
+        key={`${title}-${tool}`}
+        src={tool.replace("img:", "")}
+        alt="Tool"
+        className="h-full w-full max-h-6 max-w-8 object-contain"
+      />
+    ) : (
+      <span
+        key={`${title}-${tool}`}
+        className="rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-slate-100"
+      >
+        {tool}
+      </span>
+    )
+  ))}
+</div>
     </div>
   )
 
@@ -100,7 +113,7 @@ export function Projects() {
         </div>
 
         {/* Frontend Projects */}
-        <div className="mt-16">
+        <div className="mt-32">
           <SectionKicker>Frontend Projects</SectionKicker>
           <div className="mt-6 flex flex-wrap justify-center gap-6">
             {FRONTEND_PROJECTS.map((project) => (
