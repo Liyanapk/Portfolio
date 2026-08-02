@@ -38,18 +38,23 @@ export function EducationProcess() {
           </div>
 
           <h2 className="mt-12 font-heading text-2xl font-bold uppercase tracking-wide text-primary">Tools I Use</h2>
-          <div className="mt-6 flex flex-wrap gap-4">
-            {TOOLS.map((tool) => (
-              <div
-                key={tool}
-                className="flex min-w-20 flex-col items-center gap-2 rounded-lg border border-border bg-card px-4 py-3"
-              >
-                {/* Replace with tool logo image */}
-                <img src="" alt={`${tool} logo`} className="h-6 w-6 object-contain" />
-                <span className="text-[11px] text-muted-foreground">{tool}</span>
-              </div>
-            ))}
-          </div>
+      <div className="mt-6 flex flex-wrap gap-4">
+  {TOOLS.map((tool) => (
+    <div
+      key={tool.name}
+      className="group flex min-w-20 flex-col items-center gap-2 rounded-lg border border-[#D5CA39] bg-[#232317] px-4 py-3"
+    >
+      <img
+        src={tool.image}
+        alt={`${tool.name} logo`}
+        className="h-6 w-6 object-contain transition-all duration-300 ease-out group-hover:scale-110 group-hover:-translate-y-0.5"
+      />
+      <span className="text-[11px] text-muted-foreground">
+        {tool.name}
+      </span>
+    </div>
+  ))}
+</div>
         </div>
 
         {/* My Process */}

@@ -1,10 +1,11 @@
 import { Linkedin, Github, Dribbble } from "lucide-react"
 import { Container } from "./primitives"
+import Image from "next/image"
 
 const SOCIALS = [
-  { label: "Behance", href: "#", icon: Dribbble },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "GitHub", href: "#", icon: Github },
+  { label: "Behance", href: "https://www.behance.net/liyanakp1", image: "/footer/behance.png" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/liyana-k-p-/", image: "/footer/linkedin.png" },
+  { label: "GitHub", href: "https://github.com/Liyanapk", image: "/footer/github.png" },
 ]
 
 export function Footer() {
@@ -21,14 +22,18 @@ export function Footer() {
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-4">
-          {SOCIALS.map(({ label, href, icon: Icon }) => (
+          {SOCIALS.map(({ label, href, image }) => (
             <a
               key={label}
               href={href}
               aria-label={label}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              <Icon className="h-5 w-5" />
+              <Image   src={image}
+                      alt={label}
+                      width={24}
+                      height={24}
+                    />
             </a>
           ))}
         </div>
