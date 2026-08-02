@@ -12,7 +12,7 @@ export function Hero() {
       <Container className="relative grid grid-cols-1 items-center gap-6 pb-8 pt-4 md:grid-cols-[1fr_1.2fr_1fr] md:gap-2 md:pb-6 md:pt-5 lg:pb-4 lg:pt-10">
         {/* Left intro */}
         <div className="order-2 text-center md:order-1 md:text-left">
-          <p className="text-lg text-muted-foreground">Hello, I&apos;m</p>
+          <p className="text-lg text-muted-foreground">Helo, I&apos;m</p>
           <h1 className="mt-2 bg-gradient-to-b from-[#FFFFFF] via-[#F7F2B0] to-[#D5CA39] bg-clip-text font-heading text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl">
             LIYANA KP
           </h1>
