@@ -4,13 +4,14 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { NAV_LINKS } from "@/lib/portfolio-data"
 import { Container } from "./primitives"
+import { RevealOnView } from "./animations"
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 px-3 pt-3 md:px-4">
-      <div className="mx-auto flex w-[90%] flex-col rounded-[20px] border border-white/10 bg-[#3D3C2E]/20 backdrop-blur-md">
+      <RevealOnView as="div" className="mx-auto flex w-[90%] flex-col rounded-[20px] border border-white/10 bg-[#3D3C2E]/20 backdrop-blur-md" y={80} delay={0.08}>
         <Container className="flex h-16 items-center justify-between px-4">
           <a href="#home" className="font-heading text-lg font-semibold text-foreground">
             UI/UX Designer
@@ -58,7 +59,7 @@ export function Navbar() {
             </Container>
           </nav>
         )}
-      </div>
+      </RevealOnView>
     </header>
   )
 }

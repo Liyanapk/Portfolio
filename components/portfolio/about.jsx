@@ -2,6 +2,7 @@
 
 import { ABOUT_BADGES } from "@/lib/portfolio-data"
 import { Container, SectionKicker } from "./primitives"
+import { FadeUp } from "./animations"
 
 // Reusable outlined pill badge.
 function Badge({ children, index }) {
@@ -28,20 +29,24 @@ export function About() {
     <section id="about" className="py-16 md:py-20">
       <Container className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
         <div>
-          <SectionKicker>About Me</SectionKicker>
-          <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl text-balance">
+          <FadeUp as="div" delay={0.05}>
+            <SectionKicker>About Me</SectionKicker>
+          </FadeUp>
+          <FadeUp as="h2" className="mt-4 font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl text-balance" delay={0.1}>
             Designing experiences that people enjoy using.
-          </h2>
-          <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground text-pretty">
+          </FadeUp>
+          <FadeUp as="p" className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground text-pretty" delay={0.16}>
             I&apos;m a UI/UX Designer with a background in Front-End Development. I enjoy transforming ideas into clean,
             accessible, and user-friendly interfaces. My understanding of both design and development helps me create
             solutions that are practical, responsive, and developer-friendly.
-          </p>
+          </FadeUp>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          {ABOUT_BADGES.map((badge) => (
-            <Badge key={badge}>{badge}</Badge>
+          {ABOUT_BADGES.map((badge, index) => (
+            <FadeUp key={badge} as="div" delay={0.12 + index * 0.04} y={120}>
+              <Badge>{badge}</Badge>
+            </FadeUp>
           ))}
         </div>
       </Container>

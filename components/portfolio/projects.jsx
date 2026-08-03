@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import { UIUX_PROJECTS, FRONTEND_PROJECTS } from "@/lib/portfolio-data"
 import { Container, SectionKicker, SectionTitle } from "./primitives"
 import { FlippingCard } from "@/components/ui/flipping-card"
+import { FadeUp, ImageReveal } from "./animations"
 
 function ProjectCard({
   title,
@@ -18,11 +19,13 @@ function ProjectCard({
 }) {
   const frontContent = (
     <div className="flex h-full w-full flex-col">
-      <img
-        src={image || ''}
-        alt={`${title} — ${subtitle}`}
-        className="h-full w-full rounded-lg object-cover"
-      />
+      <ImageReveal as="div" className="h-full w-full">
+        <img
+          src={image || ''}
+          alt={`${title} — ${subtitle}`}
+          className="h-full w-full rounded-lg object-cover"
+        />
+      </ImageReveal>
 
       <div className="absolute left-4 top-4 rounded-lg bg-black/50 px-3 py-2 backdrop-blur-sm">
         <p className="font-heading text-sm font-bold uppercase tracking-wide text-white">{title}</p>
@@ -98,28 +101,34 @@ export function Projects() {
   return (
     <section id="projects" className="py-16 md:py-24">
       <Container>
-        <SectionTitle>Featured Projects</SectionTitle>
+        <FadeUp as="div" delay={0.05}>
+          <SectionTitle>Featured Projects</SectionTitle>
+        </FadeUp>
 
         {/* UI/UX Projects */}
         <div className="mt-12">
-          <SectionKicker>UI/UX Projects</SectionKicker>
+          <FadeUp as="div" delay={0.08}>
+            <SectionKicker>UI/UX Projects</SectionKicker>
+          </FadeUp>
           <div className="mt-6 flex flex-wrap justify-center gap-6">
-            {UIUX_PROJECTS.map((project) => (
-              <div key={project.title + project.subtitle} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            {UIUX_PROJECTS.map((project, index) => (
+              <FadeUp key={project.title + project.subtitle} as="div" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]" delay={0.12 + index * 0.04} y={120}>
                 <ProjectCard {...project} cta="Open Project" />
-              </div>
+              </FadeUp>
             ))}
           </div>
         </div>
 
         {/* Frontend Projects */}
         <div className="mt-32">
-          <SectionKicker>Frontend Projects</SectionKicker>
+          <FadeUp as="div" delay={0.1}>
+            <SectionKicker>Frontend Projects</SectionKicker>
+          </FadeUp>
           <div className="mt-6 flex flex-wrap justify-center gap-6">
-            {FRONTEND_PROJECTS.map((project) => (
-              <div key={project.title} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            {FRONTEND_PROJECTS.map((project, index) => (
+              <FadeUp key={project.title} as="div" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]" delay={0.12 + index * 0.04} y={120}>
                 <ProjectCard {...project} cta="Open Website" />
-              </div>
+              </FadeUp>
             ))}
           </div>
         </div>

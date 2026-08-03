@@ -1,10 +1,13 @@
+"use client"
+
 import { EXPERIENCE } from "@/lib/portfolio-data"
 import { Container, SectionTitle } from "./primitives"
+import { FadeUp } from "./animations"
 
 // Reusable timeline item.
-function ExperienceItem({ company, role, period, points }) {
+function ExperienceItem({ company, role, period, points, index }) {
   return (
-    <li className="relative pl-8">
+    <FadeUp as="li" className="relative pl-8" delay={0.12 + index * 0.04} y={120}>
       {/* dot */}
       <span className="absolute left-0 top-1.5 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-primary bg-background" />
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
@@ -20,7 +23,7 @@ function ExperienceItem({ company, role, period, points }) {
           </li>
         ))}
       </ul>
-    </li>
+    </FadeUp>
   )
 }
 
@@ -28,12 +31,14 @@ export function Experience() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <SectionTitle>Experience</SectionTitle>
+        <FadeUp as="div" delay={0.05}>
+          <SectionTitle>Experience</SectionTitle>
+        </FadeUp>
         <ol className="relative mt-12 space-y-12 border-l border-border pl-4">
           {/* Golden light that travels down the timeline occasionally */}
           <span aria-hidden="true" className="timeline-light" />
-          {EXPERIENCE.map((item) => (
-            <ExperienceItem key={item.company} {...item} />
+          {EXPERIENCE.map((item, index) => (
+            <ExperienceItem key={item.company} {...item} index={index} />
           ))}
         </ol>
       </Container>
