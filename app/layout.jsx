@@ -20,6 +20,19 @@ export const metadata = {
   title: "Liyana KP — UI/UX Designer & Front-End Developer",
   description:
     "Portfolio of Liyana KP, a UI/UX Designer and Front-End Developer creating intuitive digital experiences and responsive web applications.",
+     icons: {
+    icon: "/heroimage/favicon_portfolio.png",
+    shortcut: "/heroimage/favicon_portfolio.png",
+    apple: "/heroimage/favicon_portfolio.png",
+  },
+
+  openGraph: {
+    images: ["/heroimage/favicon_portfolio.png"],
+  },
+
+  twitter: {
+    images: ["/heroimage/favicon_portfolio.png"],
+  },
   generator: "v0.app",
 }
 
