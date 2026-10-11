@@ -3,8 +3,7 @@
 import { ArrowUpRight } from "lucide-react"
 import { UIUX_PROJECTS, FRONTEND_PROJECTS } from "@/lib/portfolio-data"
 import { Container, SectionKicker, SectionTitle } from "./primitives"
-import { FlippingCard } from "@/components/ui/flipping-card"
-import { FadeUp, ImageReveal } from "./animations"
+import { FadeUp } from "./animations"
 
 function ProjectCard({
   title,
@@ -17,78 +16,63 @@ function ProjectCard({
   details = [],
   tools = []
 }) {
-  const frontContent = (
-    <div className="flex h-full w-full flex-col">
-      <ImageReveal as="div" className="h-full w-full">
-        <img
-          src={image || ''}
-          alt={`${title} — ${subtitle}`}
-          className="h-full w-full rounded-lg object-cover"
-        />
-      </ImageReveal>
-
-      <div className="absolute left-4 top-4 rounded-lg bg-black/50 px-3 py-2 backdrop-blur-sm">
-        <p className="font-heading text-sm font-bold uppercase tracking-wide text-white">{title}</p>
-        <p className="text-xs text-slate-200">{subtitle}</p>
-      </div>
-    </div>
-  )
-
-  const backContent = (
-    <div className="flex h-full w-full flex-col justify-between rounded-xl bg-black p-5 text-white">
-      <div>
-        {/* <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-yellow-400">Project details</p> */}
-        <h3 className="mb-2 text-lg font-extrabold text-yellow-300">{backTitle}</h3>
-        {/* <p className="text-sm leading-relaxed text-slate-300">{backSkills}</p> */}
-
-        {details.length > 0 ? (
-          <ul className="mt-4 space-y-2">
-            {details.map((item) => (
-              <li key={`${title}-${item}`} className="flex items-start gap-2 text-sm text-slate-200">
-                <span className=" rounded-full bg-yellow-300" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
-
-    <div className="mt-4 flex flex-wrap items-center gap-2">
-  <span className="text-sm font-semibold text-yellow-300">Tools:</span>
-
-  {tools.map((tool) => (
-    tool.startsWith("img:") ? (
-      <img
-        key={`${title}-${tool}`}
-        src={tool.replace("img:", "")}
-        alt="Tool"
-        className="h-full w-full max-h-6 max-w-8 object-contain"
-      />
-    ) : (
-      <span
-        key={`${title}-${tool}`}
-        className="rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-slate-100"
-      >
-        {tool}
-      </span>
-    )
-  ))}
-</div>
-    </div>
-  )
-
   return (
-    <div className="flex w-full flex-col">
-      <FlippingCard
-        width={320}
-        height={260}
-        frontContent={frontContent}
-        backContent={backContent}
-      />
+    <div className="project-card-shell flex w-full flex-col">
+      <div className="project-card-surface">
+        <div className="project-card-media">
+          <img
+            src={image || ''}
+            alt={`${title} — ${subtitle}`}
+            className="project-card-image"
+          />
+        </div>
+
+        <div className="project-card-title rounded-lg bg-black/50 px-3 py-2 backdrop-blur-sm">
+          <p className="font-heading text-sm font-bold uppercase tracking-wide text-white">{title}</p>
+          <p className="text-xs text-slate-200">{subtitle}</p>
+        </div>
+
+        <div className="project-card-details text-white">
+          <h3 className="text-base font-extrabold leading-tight text-yellow-300">{backTitle}</h3>
+          {/* {backSkills ? <p className="mt-1 text-xs leading-tight text-slate-200">{backSkills}</p> : null} */}
+
+          {details.length > 0 ? (
+            <ul className="mt-2 space-y-1">
+              {details.map((item) => (
+                <li key={`${title}-${item}`} className="flex items-start gap-2 text-xs leading-tight text-slate-200">
+                  <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-yellow-300" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            <span className="text-xs font-semibold text-yellow-300">Tools:</span>
+            {tools.map((tool) => (
+              tool.startsWith("img:") ? (
+                <img
+                  key={`${title}-${tool}`}
+                  src={tool.replace("img:", "")}
+                  alt="Tool"
+                  className="h-full w-full max-h-4 max-w-4 object-contain"
+                />
+              ) : (
+                <span
+                  key={`${title}-${tool}`}
+                  className="rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-slate-100"
+                >
+                  {tool}
+                </span>
+              )
+            ))}
+          </div>
+        </div>
+      </div>
 
       <a
         href={href}
-        className="mt-3 inline-flex items-center gap-1 self-end text-xs font-semibold text-primary underline-offset-4 hover:underline"
+        className="mt-3 inline-flex items-center gap-1 self-end text-xs font-semibold text-primary underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
       >
         {cta}
         <ArrowUpRight className="h-3.5 w-3.5" />

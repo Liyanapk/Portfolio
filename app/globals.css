@@ -353,3 +353,131 @@
     display: none;
   }
 }
+
+/* ---------- Featured Project Cards ---------- */
+
+.project-card-shell {
+  perspective: 1200px;
+}
+
+.project-card-surface {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+  transform-style: preserve-3d;
+  transition:
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.project-card-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 10%) 20%, rgb(0 0 0 / 45%) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.project-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-title {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  max-width: calc(100% - 2rem);
+}
+
+.project-card-details {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, rgb(0 0 0 / 70%), rgb(0 0 0 / 96%) 22%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-shell:focus-within .project-card-details {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.project-card-shell:focus-within .project-card-surface {
+  box-shadow: 0 12px 30px rgb(0 0 0 / 28%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card-shell:hover .project-card-surface {
+    box-shadow: 0 12px 30px rgb(0 0 0 / 28%);
+    transform: rotateX(1deg) rotateY(-1deg);
+  }
+
+  .project-card-shell:hover .project-card-image {
+    transform: scale(1.04);
+  }
+
+  .project-card-shell:hover .project-card-details {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card-surface {
+    height: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .project-card-media {
+    height: 260px;
+  }
+
+  .project-card-details {
+    position: static;
+    background: var(--card);
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-surface,
+  .project-card-image,
+  .project-card-details {
+    transition: none;
+  }
+
+  .project-card-shell:hover .project-card-surface,
+  .project-card-shell:hover .project-card-image,
+  .project-card-shell:focus-within .project-card-surface {
+    transform: none;
+  }
+}
